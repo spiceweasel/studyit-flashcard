@@ -5,7 +5,7 @@ studyit-flashcard
 <p>Is a web based flashcard application that organizes card content based upon the Table of Contents of the book being studied.  This project is written in Python 2.7 using Django version 1.5.x and JQuery Mobile as the front end.</p>
 
 <h3>Purpose</h3>
-<p>This project was created in the beginning of my senior year of college to assist in studying under an anticipated heavy course load.  The ideas was to make flash-card system that allowed structured and incremental studying. I determined that an organization scheme based upon the existing structure of the books was a good choice for capturing the material (since most professors teach from a required text-book) and for studying (since the author already has organized the material in a manner that builds upon itself).  It proved to be more than suitable for my needs.</p>
+<p>This project was created in the beginning of my senior year of college to assist in studying under an anticipated heavy course load.  The ideas was to make flashcard system that allowed structured and incremental studying. I determined that an organization scheme based upon the existing structure of the books was a good choice for capturing the material (since most professors teach from a required text-book) and for studying (since the author already has organized the material in a manner that builds upon itself).  It proved to be more than suitable for my needs.</p>
 
 <h3>Project Status</h3>
 <p>Studyit-flashcard works well for it's designed purpose and is fully functional.  I have successfully used it with 10+ books and over 1500 flashcards.</p>
@@ -14,8 +14,8 @@ studyit-flashcard
 <ul>
 <li>Keep track of flashcards based upon the existing organization scheme of a book.</li>
 <li>Books can be browsed based on their included categories.</li>
-<li>Flashcared can be browsed by Chapter and section.</li>
-<li>Flashcared can be studied by Chapter or section.</li>
+<li>Flashcards can be browsed by Chapter and section.</li>
+<li>Flashcards can be studied by Chapter or section.</li>
 <li>Text or images can be applied to the front or back side of the flashcard.</li>
 <li>Uses HTML 5 media capture to allow users to take images directly from the camera on their smart devices.</li>
 </ul>
