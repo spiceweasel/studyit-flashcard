@@ -5,7 +5,7 @@ studyit-flashcard
 <p>Is a web based flashcard application that organizes card content based upon the Table of Contents of the book being studied.  This project is written in Python 2.7 using Django version 1.5.x and JQuery Mobile as the front end.</p>
 
 <h3>Purpose</h3>
-<p>This project was created in the beginning of my senior year of college to assist in studying under an anticipated heavy course load.  The ideas was to make flashcard system that allowed structured and incremental studying. I determined that an organization scheme based upon the existing structure of the books was a good choice for capturing the material (since most professors teach from a required text-book) and for studying (since the author already has organized the material in a manner that builds upon itself).  It proved to be more than suitable for my needs.</p>
+<p>This project was created in the beginning of my senior year of college to assist in studying under an anticipated heavy course load.  The ideas was to make flashcard system that allowed structured and incremental studying. I determined that an organization scheme based upon the existing structure of a book was a good choice for capturing course material (since most professors teach from a required text-book) and for studying (since the author already has organized the material in a manner that builds upon itself).  It proved to be more than suitable for my needs.</p>
 
 <h3>Project Status</h3>
 <p>Studyit-flashcard works well for it's designed purpose and is fully functional.  I have successfully used it with 10+ books and over 1500 flashcards.</p>
@@ -37,7 +37,7 @@ studyit-flashcard
 
 <h3>Known Bugs/Issues</h3>
 <ul>
-<li>When choosing study by chapter, the first displayed will have a non-matching answer.  I have not had a chance to investigate this issues.  Workaround by selecting correct or incorrect to jump to the next card.</li>
+<li>When choosing study by chapter, the first displayed will have a non-matching answer.  I have not had a chance to investigate this issue.  Workaround by selecting correct or incorrect to jump to the next card in the set.</li>
 
 </ul>
 
