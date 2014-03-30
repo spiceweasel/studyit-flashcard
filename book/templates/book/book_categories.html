@@ -1,0 +1,33 @@
+{% extends "site_base.html" %}
+
+{% block extra_script %}
+<script type="text/javascript">
+$( document ).ready(function() {
+	$(".button").button();
+});
+</script>
+{% endblock %}
+{% block body %}
+
+<div data-role="header">
+		<a href="{% url "index" %}" data-icon="home" target="_self">Home</a>
+		<h1>Browse Categories</h1>
+		 <!-- <a href="{% url 'book_search' %}" data-icon="gear" target="_self">Search</a> --> 
+</div><!-- /header -->
+
+<div data-role="content">
+	{% for c in categories %}
+	<div data-role="collapsible" data-theme="b" data-content-theme="d" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" data-inset="false">
+		<h2>{{c.name}}</h2>
+		<ul data-role="listview">
+			{% for ch in c.children %}{% if ch.book_count != 0 %}
+			<li>
+				<a href="{% url 'book_list' %}?category_id={{ch.id}}">{{ch.name}}<span class="ui-li-count">{{ch.book_count}}</span></a>
+			</li>
+			{% endif %}{% endfor %}
+		</ul>
+	</div><!-- /collapsible -->
+	{% endfor %}
+</div>
+
+{% endblock %}

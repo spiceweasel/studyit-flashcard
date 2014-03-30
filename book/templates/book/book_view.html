@@ -1,0 +1,50 @@
+{% extends "site_base.html" %}
+
+{% block extra_script %}
+<script type="text/javascript">
+$( document ).ready(function() {
+	$(".button").button();
+});
+</script>
+{% endblock %}
+{% block body %}
+
+<div data-role="header">
+		<a href="{% url "book_list" %}" data-icon="home" target="_self">Book List</a>
+		<h1>StudyIt Online Learning</h1>
+		 <!-- <a href="{% url 'book_search' %}" data-icon="gear" target="_self">Search</a> --> 
+</div><!-- /header -->
+
+<div data-role="content">
+	
+	<ul data-role="listview" data-inset="true">
+			
+			
+			<li>
+				<h3>{{book.title}}</h3>
+				<p></p>
+				<p><strong>Publisher: </strong>{{book.publisher}} </p>
+				<p><strong>Author(s): </strong>{{book.authors}}</p>
+				<p class="ui-li-aside">{{book.edition}} <strong>{{book.publication_date.year}}</strong></p>
+			</li>
+			
+		</ul>
+		
+		
+		{% for c in book.chapter_set.all %}
+		<div data-role="collapsible" data-theme="b" data-content-theme="d" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" data-inset="false">
+			<h2>{{c.number}} {{c.title}}</h2>
+			<ul data-role="listview">
+				<li><a class="button" href="{% url 'flash_card_next_chapter' c.id %}">Study By Chapter</a></li>
+				{% for s in c.section_set.all %}
+				<li><a href="{% url 'flash_card_list' %}?section={{s.id}}">{{s.number}}{% if s.subsection_number %}.{{s.subsection_number}}{% endif %} {{s.title}} (Pg. {{s.page}})<span class="ui-li-count">{{s.flashcard_set.all.count }}</span></a>
+					<a data-icon="add" href="{% url 'flash_card_add' s.id %}" >Add Flashcard</a>
+					
+				</li>
+				{% endfor %}
+			</ul>
+		</div><!-- /collapsible -->
+		{% endfor %}
+</div>
+
+{% endblock %}

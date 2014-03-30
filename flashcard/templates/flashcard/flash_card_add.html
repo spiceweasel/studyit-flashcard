@@ -1,0 +1,40 @@
+{% extends "site_base.html" %}
+
+{% block extra_script %}
+<script type="text/javascript">
+$( document ).bind( "pageinit", function() {
+
+});
+</script>
+{% endblock %}
+
+{% block body %}
+
+<div data-role="header">
+		<a href="{% url "index" %}" data-icon="home" target="_self">Home</a>
+		<h1>Add Flashcard</h1>
+		 <a href="{% url 'book_view' section.chapter.book.isbn %}" data-icon="gear" target="_self">Book</a> 
+</div><!-- /header -->
+
+<div data-role="content">
+	<h2>{{section.chapter.book.title}}</h2>
+	<h3>{{section.chapter.number}}.{{section.number}} {{section.chapter.title}}: {{section.title}}</h3>
+  <form data-ajax="false" enctype="multipart/form-data" name="flash_card_add" action="{% url 'flash_card_add' section.id %}" method="post">
+	{% csrf_token %}
+	
+	<ul>
+		{{ form.as_ul }}
+		
+	</ul>
+	<br><br>
+	<input type="submit" name="submit" value="Save and add another">
+	<input type="submit" name="submit" value="Save and return to book">
+	
+  </form>
+</div>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "site_base.html" %}
+
+{% block body %}
+
+<div data-role="header">
+		<a href="{% url 'book_list' %}" data-icon="gear" target="_self">Book List</a>
+		<h1>Flash Card List</h1>
+		{% if section %}
+		 <a href="{% url 'book_view' section.chapter.book.isbn %}" data-icon="gear" target="_self">Book</a>
+		{% endif %}
+</div><!-- /header -->
+
+<div data-role="content">
+	<ul data-role="listview" data-inset="true">
+			{% for f in flash_cards %}
+			
+			<li><a href="{% url 'flash_card_detail' f.id %}" target="_self">
+				<h3>Chapter {{f.section.chapter.number}} Section {{f.section.number}}.{{f.section}}</h3>
+				{% if f.question %}<p><strong>Question: </strong>{{f.question|safe}} </p>{% endif %}
+				{% if f.question_image %}{% if not f.question %}<strong>IMG</strong>{% endif %}{% endif %}
+				
+			</a></li>
+			{% empty %}
+			<p>None Found</p>
+			{% endfor %}
+		</ul>
+</div>
+
+
+
+{% endblock %}

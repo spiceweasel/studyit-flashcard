@@ -1,0 +1,39 @@
+{% extends "site_base.html" %}
+
+{% block body %}
+
+<div data-role="header">
+		{% if user.is_staff %}
+		<a href="{% url 'admin:index' %}" data-icon="gear" target="_self">Admin</a>
+		{% endif %}
+		<h1>StudyIt Online Learning</h1>
+		 
+		 {% if user.is_authenticated %}
+		 <a href="{% url "logout_user" %}" data-icon="gear" target="_self">Logout</a>
+		 {% endif %} 
+</div><!-- /header -->
+
+<div data-role="content">
+{% if user.is_authenticated %}
+<p>Welcome to Study-it online learning application. To study by subject, please browse for the book that goes along with your course. Navigate 
+	to the chapter and select the section you would like to study from. Related learning materials are available in each section. 
+</p>
+	<!-- <a data-role="button" data-icon="search" href="{% url 'book_search' %}" target="_self">Search Books</a> -->
+	<a data-role="button" data-icon="grid" href="{% url 'book_categories' %}" target="_self">Browse Books</a>
+	<a data-role="button" data-icon="grid" href="{% url 'book_search' %}" target="_self">Search Books</a>
+	<a data-role="button" data-icon="grid" href="{% url 'book_list' %}" target="_self">All Books</a>
+	
+{% else %}
+<p>
+	Welcome to Studyit online learning application.  This application allows users to study on the go. Study materials can be created
+	and viewed from your mobile phone or pc.  Once created you can access them anywhere.
+	
+</p>
+<p>Please login to use this system. </p>
+ <a data-role="button" dtat-icon="grid"  href="{% url 'login_user' %}">Login</a>
+
+{% endif %}
+</div>
+
+
+{% endblock %}

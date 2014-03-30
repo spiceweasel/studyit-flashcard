@@ -1,0 +1,76 @@
+{% extends "site_base.html" %}
+
+{% block body %}
+
+
+<div class="swipeable" data-role="page" id="question_side">
+	<div data-role="header">
+		<a href="{% url "book_list" %}" data-icon="gear" target="_self">Book List</a>
+		<h1>Question</h1>
+		 <a href="{% url 'book_view' flash_card.section.chapter.book.isbn %}" data-icon="gear" target="_self">Book</a> 
+	</div><!-- /header -->
+	
+	
+	<div data-role="navbar">
+	        <ul>
+	        {% if by_chapter %}
+	            <li><a id='btn_incorrect1' href="{% url 'flash_card_next_chapter' flash_card.section.chapter_id %}?incorrect=true&flash_card={{flash_card.id}}" target="_self">Incorrect >></a></li>
+	            <li><a id='btn_answer1' href="#answer_side" target="_self">Answer</a></li>
+				<li><a id='btn_correct1' href="{% url 'flash_card_next_chapter' flash_card.section.chapter_id %}?correct=true&flash_card={{flash_card.id}}" target="_self">Correct >></a></li>
+			{% else %}
+				<li><a id='btn_incorrect2' href="{% url 'flash_card_next' flash_card.section.id %}?incorrect=true&flash_card={{flash_card.id}}" target="_self">Incorrect >></a></li>
+	            <li><a id='btn_answer2' href="#answer_side" target="_self">Answer</a></li>
+				<li><a id='btn_correct2' href="{% url 'flash_card_next' flash_card.section.id %}?correct=true&flash_card={{flash_card.id}}" target="_self">Correct >></a></li>
+			{% endif %}
+	        </ul>
+	  </div><!-- /navbar -->
+	
+	<div data-role="content">
+		<a href="{% url 'book_view' flash_card.section.chapter.book.isbn %}">{{flash_card.section.chapter.book.title}}</a> >> 
+		<a href="{% url 'flash_card_next_chapter' flash_card.section.chapter.id %}">{{flash_card.section.chapter.number}} {{flash_card.section.chapter.title}}</a> >> 
+		<a href="{% url 'flash_card_next' flash_card.section.id %}?flash_card={{flash_card.id}}">{{flash_card.section.number}} {{flash_card.section.title}}</a>
+	</div>
+	<div data-role="content">
+			<p><strong>Question: </strong>{{flash_card.question|safe}}</p>
+			{% if flash_card.question_image %}
+			<img style="max-width: 100%" src="{{MEDIA_URL}}{{flash_card.question_image}}" />
+			{% endif %}
+	</div>
+	
+</div>
+
+<div class="swipeable" data-role="page" id="answer_side">
+	<div data-role="header">
+		<a href="{% url "index" %}" data-icon="home" target="_self">Home</a>
+		<h1>Answer</h1>
+		 <a href="{% url 'flash_card_list' %}?section={{flash_card.section}}" data-icon="gear" target="_self">Section List</a> 
+	</div><!-- /header -->
+	
+	<div data-role="navbar">
+	        <ul>
+	         {% if by_chapter %}
+	           <li><a id='btn_incorrect3' href="{% url 'flash_card_next_chapter' flash_card.section.chapter_id %}?incorrect=true&flash_card={{flash_card.id}}" target="_self">Incorrect >></a></li>
+	           <li><a id='btn_answer3' href="#question_side" target="_self">Question</a></li>
+               <li><a id='btn_correct3' href="{% url 'flash_card_next_chapter' flash_card.section.chapter_id %}?correct=true&flash_card={{flash_card.id}}" target="_self">Correct >></a></li>
+             {% else %}
+               <li><a id='btn_incorrect4' href="{% url 'flash_card_next' flash_card.section.id %}?incorrect=true&flash_card={{flash_card.id}}" target="_self">Incorrect >></a></li>
+	           <li><a id='btn_answer4' href="#question_side" target="_self">Question</a></li>
+               <li><a id='btn_correct4' href="{% url 'flash_card_next' flash_card.section.id %}?correct=true&flash_card={{flash_card.id}}" target="_self">Correct >></a></li>
+             {% endif %}
+                              				
+	        </ul>
+	  </div><!-- /navbar -->
+	
+	<div data-role="content">
+			<p><strong>Answer: </strong>{{flash_card.answer|safe}}</p>
+			{% if flash_card.answer_image %}
+			<img style="max-width: 100%" src="{{MEDIA_URL}}{{flash_card.answer_image}}" />
+			{% endif %}
+	</div>
+	
+</div>
+
+
+
+{% endblock %}
+

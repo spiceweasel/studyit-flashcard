@@ -1,0 +1,30 @@
+{% extends "site_base.html" %}
+
+{% block body %}
+
+<div data-role="header">
+		<a href="{% url "index" %}" data-icon="home" target="_self">Home</a>
+		<h1>StudyIt Online Learning</h1>
+		 <!-- <a href="{% url 'book_search' %}" data-icon="gear" target="_self">Search</a> --> 
+</div><!-- /header -->
+
+<div data-role="content">
+	<ul data-role="listview" data-inset="true">
+			{% for b in books %}
+			
+			<li><a href="{% url 'book_view' b.isbn %}">
+				<h3>{{b.title}}</h3>
+				<p></p>
+				<p><strong>Publisher: </strong>{{b.publisher}} </p>
+				<p><strong>Author(s): </strong>{{b.authors}}</p>
+				<p class="ui-li-aside">{{b.edition}} <strong>{{b.publication_date.year}}</strong></p>
+			</a></li>
+			{% empty %}
+			<p>None Found</p>
+			{% endfor %}
+		</ul>
+</div>
+
+
+
+{% endblock %}
